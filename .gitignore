@@ -4,3 +4,7 @@
 *.iws
 out/
 .idea_modules/
+node_modules/
+dist/
+.sass-cache/
+app/bower_components/*
