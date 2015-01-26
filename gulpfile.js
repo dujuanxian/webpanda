@@ -2,22 +2,16 @@
 
 var gulp = require('gulp');
 var del = require('del');
-
-
 var path = require('path');
-
 
 // Load plugins
 var $ = require('gulp-load-plugins')();
 var browserify = require('browserify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream'),
-    
     sourceFile = './app/scripts/app.js',
-    
     destFolder = './dist/scripts',
     destFileName = 'app.js';
-
 
 // Styles
 gulp.task('styles', function () {
@@ -31,7 +25,6 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('dist/styles'))
         .pipe($.size());
 });
-
 
 // Scripts
 gulp.task('scripts', function () {
@@ -54,20 +47,13 @@ gulp.task('scripts', function () {
     }
 
     return rebundle();
-
 });
-
-
-
-
 
 gulp.task('jade', function () {
     return gulp.src('app/template/*.jade')
         .pipe($.jade({ pretty: true }))
         .pipe(gulp.dest('dist'));
-})
-
-
+});
 
 // HTML
 gulp.task('html', function () {
@@ -89,8 +75,6 @@ gulp.task('images', function () {
         .pipe($.size());
 });
 
-
-
 gulp.task('jest', function () {
     var nodeModules = path.resolve('./node_modules');
     return gulp.src('app/scripts/**/__tests__')
@@ -100,13 +84,10 @@ gulp.task('jest', function () {
         }));
 });
 
-
-
 // Clean
 gulp.task('clean', function (cb) {
     cb(del.sync(['dist/styles', 'dist/scripts', 'dist/images']));
 });
-
 
 // Bundle
 gulp.task('bundle', ['styles', 'scripts', 'bower'], function(){
@@ -147,24 +128,10 @@ gulp.task('extras', function () {
 
 // Watch
 gulp.task('watch', ['html', 'bundle', 'serve'], function () {
-
-    // Watch .json files
     gulp.watch('app/scripts/**/*.json', ['json']);
-
-    // Watch .html files
     gulp.watch('app/*.html', ['html']);
-
-    
-    // Watch .scss files
     gulp.watch('app/styles/**/*.scss', ['styles']);
-    
-
-
-    // Watch .jade files
     gulp.watch('app/template/**/*.jade', ['jade', 'html']);
-
-
-    // Watch image files
     gulp.watch('app/images/**/*', ['images']);
 });
 
