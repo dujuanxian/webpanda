@@ -111,7 +111,6 @@ gulp.task('serve', function () {
 gulp.task('bower', function() {
     gulp.src('app/bower_components/**/*.js', {base: 'app/bower_components'})
         .pipe(gulp.dest('dist/bower_components/'));
-
 });
 
 gulp.task('json', function() {
@@ -129,6 +128,7 @@ gulp.task('extras', function () {
 // Watch
 gulp.task('watch', ['html', 'bundle', 'serve'], function () {
     gulp.watch('app/scripts/**/*.json', ['json']);
+    gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/*.html', ['html']);
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/template/**/*.jade', ['jade', 'html']);
