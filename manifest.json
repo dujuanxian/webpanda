@@ -1,12 +1,15 @@
 {
-  "name": "Web Panda",
-  "description": "Free Offline Web Development Tool",
-  "version": "0.1",
-  "manifest_version": 2,
-  "app": {
-    "background": {
-      "scripts": ["background.js"]
+    "name": "Web Panda",
+    "description": "Free Offline Web Development Tool",
+    "version": "0.1",
+    "manifest_version": 2,
+    "app": {
+        "background": {
+            "scripts": ["background.js"]
+        }
+    },
+    "icons": {
+        "16": "images/web-panda-16.png",
+        "128": "images/web-panda-128.png"
     }
-  },
-  "icons": { "16": "images/web-panda-16.png", "128": "images/web-panda-128.png" }
 }
