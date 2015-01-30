@@ -14,5 +14,5 @@ var WebPandaApp = React.createClass({
     }
 });
 
-React.renderComponent(<WebPandaApp />, mountNode);
+React.render(<WebPandaApp />, mountNode);
 
