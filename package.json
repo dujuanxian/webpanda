@@ -40,9 +40,11 @@
       ]
   },
   "browser": {
-      "jquery": "./app/bower_components/jquery/dist/jquery.js"
+      "jquery": "./app/bower_components/jquery/dist/jquery.js",
+      "underscore": "./app/bower_components/underscore/underscore.js"
   },
   "browserify-shim": {
-      "jquery": "$"
+      "jquery": "$",
+      "underscore": "_"
   }
 }
