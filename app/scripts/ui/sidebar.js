@@ -13,6 +13,7 @@ var Sidebar = React.createClass({
         });
         return (
             <section className="sidebar">
+                <h5>Project</h5>
                 {titleList}
             </section>
         );
