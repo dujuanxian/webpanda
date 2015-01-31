@@ -24,11 +24,19 @@ var getTitleList = function() {
 }();
 
 var WebPandaApp = React.createClass({
+    getInitialState: function() {
+        return {
+            activeTitle: _.first(files).title
+        }
+    },
+    showContent: function(title) {
+        this.setState({activeTitle: title});
+    },
     render: function() {
         return (
             <div>
-                <Sidebar titleList={getTitleList}/>
-                <Preview />
+                <Sidebar titleList={getTitleList} showContent={this.showContent}/>
+                <Preview content={this.state.activeTitle}/>
             </div>
         );
     }
