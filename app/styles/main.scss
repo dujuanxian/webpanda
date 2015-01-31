@@ -1,19 +1,21 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/";
 
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "./sidebar";
+@import "./preview";
 
+head,
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-header,
-main {
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 0;
+    padding: 0;
 }
 
 header {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 20px;
+    position: fixed;
+    width: 100%;
     border-bottom: 1px solid #e5e5e5;
     h3 {
         margin-top: 0;
@@ -23,32 +25,6 @@ header {
     }
 }
 
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-    .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-    }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
-    }
-
-    header,
-    main {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-
-    header {
-        margin-bottom: 30px;
-    }
-
-    .jumbotron {
-        border-bottom: 0;
-    }
+main {
+    padding-top: 80px;
 }
