@@ -23,7 +23,8 @@
     "reactify": "1.0.0",
     "watchify": "~2.1",
     "browserify-shim": "^3.8.0",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "brace": "0.4.0"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -41,10 +42,12 @@
   },
   "browser": {
       "jquery": "./app/bower_components/jquery/dist/jquery.js",
-      "underscore": "./app/bower_components/underscore/underscore.js"
+      "underscore": "./app/bower_components/underscore/underscore.js",
+      "ace": "./app/bower_components/ace-builds/src-noconflict/ace.js"
   },
   "browserify-shim": {
       "jquery": "$",
-      "underscore": "_"
+      "underscore": "_",
+      "ace": "Ace"
   }
 }
