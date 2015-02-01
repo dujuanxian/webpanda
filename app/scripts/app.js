@@ -31,7 +31,9 @@ var WebPandaApp = React.createClass({
         }
     },
     showContent: function(title) {
-        this.setState({activeTitle: title});
+        this.setState({activeTitle: title}, function() {
+            this.refs.editor.setContent(this.getContent());
+        }.bind(this));
     },
     getContent: function() {
         var that = this;
@@ -46,7 +48,7 @@ var WebPandaApp = React.createClass({
             <div>
                 <Sidebar titleList={getTitleList} showContent={this.showContent}/>
                 <Preview content={this.getContent()}/>
-                <Editor name="editor" content={this.getContent()} theme="textmate" mode="javascript"/>
+                <Editor name="editor" content={this.getContent()} theme="textmate" mode="javascript" ref="editor" />
             </div>
         );
     }

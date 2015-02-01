@@ -43,13 +43,20 @@ var Editor = React.createClass({
             theme  : 'monokai'
         };
     },
+    shouldComponentUpdate: function() {
+        return false;
+    },
     componentDidMount: function() {
         var editor = ace.edit(this.props.name);
-        editor.getSession().setMode('ace/mode/'+this.props.mode);
-        editor.setTheme('ace/theme/'+this.props.theme);
+        editor.getSession().setMode('ace/mode/' + this.props.mode);
+        editor.setTheme('ace/theme/' + this.props.theme);
+        this.setState({editor: editor});
     },
     render: function() {
         return (<section id={this.props.name}>{this.props.content}</section>);
+    },
+    setContent: function(content) {
+        this.state.editor.setValue(content);
     }
 });
 
