@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 var React = require('react'),
-    Title = require('./title');
+    Title = require('./Title');
 
 var Sidebar = React.createClass({
     handleClick: function(title) {

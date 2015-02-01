@@ -1,9 +1,9 @@
 /** @jsx React.DOM */
 
 var React = window.React = require('react'),
-    Sidebar = require('./ui/sidebar'),
-    Preview = require('./ui/preview'),
-    Ace = require('./ui/ace-editor'),
+    Sidebar = require('./ui/Sidebar'),
+    Preview = require('./ui/Preview'),
+    Ace = require('./ui/AceEditor'),
     _ = require('underscore'),
     mountNode = document.getElementById("app");
 
