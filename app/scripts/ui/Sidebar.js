@@ -7,9 +7,7 @@ var Sidebar = React.createClass({
         this.props.onFileClick(fileName);
     },
     render: function() {
-        var files = this.props.fileNames.map(function(fileName) {
-            return <File onClick={this.onClick} fileName={fileName}/>;
-        }.bind(this));
+        var files = this.props.fileNames.map(n => <File onClick={this.onClick} fileName={n}/>);
         return (
             <section className="sidebar">
                 <h5>Project</h5>

@@ -19,8 +19,7 @@ var files = [
 ];
 
 var getFileNames = function() {
-    return _.chain(files)
-        .map(function(f) { return f.name });
+    return files.map(f => f.name);
 };
 
 var WebPandaApp = React.createClass({
@@ -35,10 +34,8 @@ var WebPandaApp = React.createClass({
         }.bind(this));
     },
     getContent: function() {
-        var that = this;
         return _.chain(files)
-            .filter(function(file){return (file.name === that.state.currentFileName)})
-            .first()
+            .find(file => file.name === this.state.currentFileName)
             .value()
             .content;
     },
