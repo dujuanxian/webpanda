@@ -8,10 +8,12 @@ var path = require('path');
 var $ = require('gulp-load-plugins')();
 var browserify = require('browserify');
 var watchify = require('watchify');
-var source = require('vinyl-source-stream'),
-    sourceFile = './app/scripts/app.js',
-    destFolder = './dist/scripts',
-    destFileName = 'app.js';
+var source = require('vinyl-source-stream');
+var shell = require('gulp-shell');
+
+var sourceFile = './app/scripts/app.js';
+var destFolder = './dist/scripts';
+var destFileName = 'app.js';
 
 // Styles
 gulp.task('styles', function () {
@@ -107,6 +109,10 @@ gulp.task('serve', function () {
         }));
 });
 
+gulp.task('home', function() {
+    gulp.src(".").pipe(shell(['open http://localhost:9000']));
+});
+
 // Bower helper
 gulp.task('bower', function() {
     gulp.src('app/bower_components/**/*.js', {base: 'app/bower_components'})
@@ -126,7 +132,7 @@ gulp.task('extras', function () {
 });
 
 // Watch
-gulp.task('watch', ['html', 'bundle', 'serve'], function () {
+gulp.task('watch', ['html', 'bundle', 'serve', 'home'], function () {
     gulp.watch('app/scripts/**/*.json', ['json']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/*.html', ['html']);
