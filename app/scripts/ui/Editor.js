@@ -31,14 +31,14 @@ require('brace/mode/csharp');
 require('brace/mode/coffee');
 require('brace/mode/css');
 
-var Ace = React.createClass({
+var Editor = React.createClass({
     propTypes: {
         mode  : React.PropTypes.string,
         theme : React.PropTypes.string
     },
     getDefaultProps: function() {
         return {
-            name   : 'brace-editor',
+            name   : 'editor',
             mode   : 'javascript',
             theme  : 'monokai'
         };
@@ -53,4 +53,4 @@ var Ace = React.createClass({
     }
 });
 
-module.exports = Ace;
+module.exports = Editor;

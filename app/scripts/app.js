@@ -3,7 +3,7 @@
 var React = window.React = require('react'),
     Sidebar = require('./ui/Sidebar'),
     Preview = require('./ui/Preview'),
-    Ace = require('./ui/AceEditor'),
+    Editor = require('./ui/Editor'),
     _ = require('underscore'),
     mountNode = document.getElementById("app");
 
@@ -46,7 +46,7 @@ var WebPandaApp = React.createClass({
             <div>
                 <Sidebar titleList={getTitleList} showContent={this.showContent}/>
                 <Preview content={this.getContent()}/>
-                <Ace name="ace-editor" content={this.getContent()} theme="textmate" mode="javascript"/>
+                <Editor name="editor" content={this.getContent()} theme="textmate" mode="javascript"/>
             </div>
         );
     }
