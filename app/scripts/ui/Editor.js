@@ -52,11 +52,11 @@ var Editor = React.createClass({
         editor.setTheme('ace/theme/' + this.props.theme);
         this.setState({editor: editor});
     },
+    componentWillReceiveProps: function(nextProps) {
+        this.state.editor.setValue(nextProps.content);
+    },
     render: function() {
         return (<section id={this.props.name}>{this.props.content}</section>);
-    },
-    setContent: function(content) {
-        this.state.editor.setValue(content);
     }
 });
 

@@ -29,9 +29,7 @@ var WebPandaApp = React.createClass({
         }
     },
     showContent: function(fileName) {
-        this.setState({currentFileName: fileName}, function() {
-            this.refs.editor.setContent(this.getContent());
-        }.bind(this));
+        this.setState({currentFileName: fileName});
     },
     getContent: function() {
         return _.chain(files)
