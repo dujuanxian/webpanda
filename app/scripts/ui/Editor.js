@@ -39,8 +39,8 @@ var Editor = React.createClass({
     getDefaultProps: function() {
         return {
             name   : 'editor',
-            mode   : 'javascript',
-            theme  : 'monokai'
+            mode   : 'text',
+            theme  : 'tomorrow'
         };
     },
     shouldComponentUpdate: function() {

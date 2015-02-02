@@ -42,7 +42,7 @@ var WebPandaApp = React.createClass({
             <div>
                 <Sidebar fileNames={getFileNames()} onFileClick={this.showContent}/>
                 <Preview content={this.getContent()}/>
-                <Editor name="editor" content={this.getContent()} theme="textmate" mode="javascript" ref="editor" />
+                <Editor name="editor" content={this.getContent()} theme="tomorrow" mode="javascript" ref="editor" />
             </div>
         );
     }
