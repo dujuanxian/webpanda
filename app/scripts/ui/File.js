@@ -2,6 +2,10 @@
 var React = require('react');
 
 var File = React.createClass({
+    propTypes: {
+        fileName : React.PropTypes.string,
+        onClick  : React.PropTypes.func
+    },
     onClick: function() {
         this.props.onClick(this.props.fileName);
     },

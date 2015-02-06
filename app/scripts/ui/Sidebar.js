@@ -3,6 +3,10 @@ var React = require('react'),
     File = require('./File');
 
 var Sidebar = React.createClass({
+    propTypes : {
+        fileNames: React.PropTypes.array,
+        onFileClick: React.PropTypes.func
+    },
     onClick: function(fileName) {
         this.props.onFileClick(fileName);
     },
