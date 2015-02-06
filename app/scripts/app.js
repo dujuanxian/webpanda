@@ -10,7 +10,14 @@ var React = window.React = require('react'),
 var files = [
     {
         name: "index.html",
-        content: "<!doctype html><head><title>index</title></head><body>this is index content</body></html>"
+        content: "<!doctype html>\n" +
+        "  <head>\n" +
+        "    <title>index</title>\n" +
+        "  </head>\n" +
+        "  <body>\n" +
+        "    this is index content\n" +
+        "  </body>\n" +
+        "</html>\n"
     },
     {
         name: "README.md",
