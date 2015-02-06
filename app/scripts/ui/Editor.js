@@ -47,13 +47,14 @@ var Editor = React.createClass({
         return false;
     },
     componentDidMount: function() {
-        var editor = ace.edit(this.props.name);
-        editor.getSession().setMode('ace/mode/' + this.props.mode);
-        editor.setTheme('ace/theme/' + this.props.theme);
-        this.setState({editor: editor});
+        // `editor` is nothing to do with `render`, so we can put it in `this`
+        // see: http://stackoverflow.com/a/28346344/342235
+        this.editor = ace.edit(this.props.name);
+        this.editor.getSession().setMode('ace/mode/' + this.props.mode);
+        this.editor.setTheme('ace/theme/' + this.props.theme);
     },
     componentWillReceiveProps: function(nextProps) {
-        this.state.editor.setValue(nextProps.content);
+        this.editor.setValue(nextProps.content);
     },
     render: function() {
         return (<section id={this.props.name}>{this.props.content}</section>);
