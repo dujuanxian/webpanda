@@ -8,7 +8,9 @@ var path = require('path');
 var $ = require('gulp-load-plugins')();
 var browserify = require('browserify');
 var watchify = require('watchify');
+var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var shell = require('gulp-shell');
 
 var sourceFile = './app/scripts/app.js';
@@ -35,8 +37,7 @@ gulp.task('scripts', function () {
         insertGlobals: true,
         cache: {},
         packageCache: {},
-        fullPaths: true,
-        debug: true
+        fullPaths: true
     }));
 
     bundler.on('update', rebundle);
@@ -46,6 +47,9 @@ gulp.task('scripts', function () {
             // log errors if they happen
             .on('error', $.util.log.bind($.util, 'Browserify Error'))
             .pipe(source(destFileName))
+            .pipe(buffer())
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.write(destFolder))
             .pipe(gulp.dest(destFolder));
     }
 
