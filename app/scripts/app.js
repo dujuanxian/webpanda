@@ -1,56 +1,34 @@
 /** @jsx React.DOM */
 
 var React = window.React = require('react'),
-    Sidebar = require('./ui/Sidebar'),
-    Preview = require('./ui/Preview'),
-    Editor = require('./ui/Editor'),
-    _ = require('lodash'),
-    mountNode = document.getElementById("app");
+    Header = require('./ui/Header'),
+    MyProjectsPage = require('./ui/MyProjectsPage'),
+    MainPage = require('./ui/MainPage');
 
-var files = [
-    {
-        name: "index.html",
-        content: "<!doctype html>\n" +
-        "  <head>\n" +
-        "    <title>index</title>\n" +
-        "  </head>\n" +
-        "  <body>\n" +
-        "    this is index content\n" +
-        "  </body>\n" +
-        "</html>\n"
-    },
-    {
-        name: "README.md",
-        content: "Just basic readme"
-    }
-];
+var Router = require('react-router');
+var {DefaultRoute,Link,Route,RouteHandler} = Router;
 
-var getFileNames = function() {
-    return files.map(f => f.name);
-};
-
-var WebPandaApp = React.createClass({
-    getInitialState: function() {
-        return {
-            currentFileName: _.first(files).name
-        }
-    },
-    showFileContent: function(fileName) {
-        this.setState({currentFileName: fileName});
-    },
-    getFileContent: function(fileName) {
-        return _.find(files, file => file.name === fileName).content;
-    },
+var App = React.createClass({
     render: function() {
         return (
             <div>
-                <Sidebar fileNames={getFileNames()} onFileClick={this.showFileContent}/>
-                <Editor name="editor" content={this.getFileContent(this.state.currentFileName)} theme="tomorrow" mode="javascript" ref="editor" />
-                <Preview content={this.getFileContent('index.html')}/>
+                <Header />
+                <hr />
+                <RouteHandler/>
             </div>
         );
     }
 });
 
-React.render(<WebPandaApp />, mountNode);
+var routes = (
+    <Route name="app" path="/" handler={App}>
+        <DefaultRoute handler={MainPage} />
+        <Route name="MyProjectsPage" handler={MyProjectsPage} />
+    </Route>
+);
+
+Router.run(routes, function(Handler) {
+    React.render(<Handler />, document.body);
+});
+
 
