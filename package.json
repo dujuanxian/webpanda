@@ -22,6 +22,7 @@
     "gulp-util": "~3.0.1",
     "gulp-webserver": "0.9.0",
     "jest": "0.1.37",
+    "lodash": "^3.1.0",
     "react": "0.12.2",
     "reactify": "1.0.0",
     "vinyl-source-stream": "^1.0.0",
@@ -41,13 +42,6 @@
       ]
     ]
   },
-  "browser": {
-    "jquery": "./app/bower_components/jquery/dist/jquery.js",
-    "lodash": "./app/bower_components/lodash/lodash.js",
-    "ace": "./app/bower_components/ace-builds/src-noconflict/ace.js"
-  },
   "browserify-shim": {
-    "jquery": "$",
-    "ace": "Ace"
   }
 }
