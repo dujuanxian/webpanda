@@ -2,9 +2,9 @@
 var React = require('react'),
     _ = require('lodash'),
     files = require('../files'),
-    Sidebar = require('./Sidebar'),
-    Preview = require('./Preview'),
-    Editor = require('./Editor');
+    Sidebar = require('./main/Sidebar'),
+    Preview = require('./main/Preview'),
+    Editor = require('./main/Editor');
 
 var getFileNames = function() {
     return files.map(f => f.name);
