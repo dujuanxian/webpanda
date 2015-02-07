@@ -35,21 +35,21 @@ var WebPandaApp = React.createClass({
             currentFileName: _.first(files).name
         }
     },
-    showContent: function(fileName) {
+    showFileContent: function(fileName) {
         this.setState({currentFileName: fileName});
     },
-    getContent: function() {
+    getFileContent: function(fileName) {
         return _.chain(files)
-            .find(file => file.name === this.state.currentFileName)
+            .find(file => file.name === fileName)
             .value()
             .content;
     },
     render: function() {
         return (
             <div>
-                <Sidebar fileNames={getFileNames()} onFileClick={this.showContent}/>
-                <Preview content={this.getContent()}/>
-                <Editor name="editor" content={this.getContent()} theme="tomorrow" mode="javascript" ref="editor" />
+                <Sidebar fileNames={getFileNames()} onFileClick={this.showFileContent}/>
+                <Preview content={this.getFileContent('index.html')}/>
+                <Editor name="editor" content={this.getFileContent(this.state.currentFileName)} theme="tomorrow" mode="javascript" ref="editor" />
             </div>
         );
     }
