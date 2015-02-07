@@ -4,7 +4,7 @@ var React = window.React = require('react'),
     Sidebar = require('./ui/Sidebar'),
     Preview = require('./ui/Preview'),
     Editor = require('./ui/Editor'),
-    _ = require('underscore'),
+    _ = require('lodash'),
     mountNode = document.getElementById("app");
 
 var files = [

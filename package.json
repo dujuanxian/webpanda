@@ -43,12 +43,11 @@
   },
   "browser": {
     "jquery": "./app/bower_components/jquery/dist/jquery.js",
-    "underscore": "./app/bower_components/underscore/underscore.js",
+    "lodash": "./app/bower_components/lodash/lodash.js",
     "ace": "./app/bower_components/ace-builds/src-noconflict/ace.js"
   },
   "browserify-shim": {
     "jquery": "$",
-    "underscore": "_",
     "ace": "Ace"
   }
 }
