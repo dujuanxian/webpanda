@@ -39,10 +39,7 @@ var WebPandaApp = React.createClass({
         this.setState({currentFileName: fileName});
     },
     getFileContent: function(fileName) {
-        return _.chain(files)
-            .find(file => file.name === fileName)
-            .value()
-            .content;
+        return _.find(files, file => file.name === fileName).content;
     },
     render: function() {
         return (
