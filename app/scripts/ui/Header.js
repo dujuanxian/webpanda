@@ -16,6 +16,10 @@ module.exports = React.createClass({
                     <a>
                         <Link to="MyProjectsPage">MyProjectsPage</Link>
                     </a>
+                    <span>&nbsp;&nbsp; | &nbsp;&nbsp;</span>
+                    <a>
+                        <Link to="ConfigPage">Config</Link>
+                    </a>
                 </span>
             </div>
         );

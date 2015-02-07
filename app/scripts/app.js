@@ -3,6 +3,7 @@
 var React = window.React = require('react'),
     Header = require('./ui/Header'),
     MyProjectsPage = require('./ui/MyProjectsPage'),
+    ConfigPage = require('./ui/ConfigPage'),
     MainPage = require('./ui/MainPage');
 
 var Router = require('react-router');
@@ -24,6 +25,7 @@ var routes = (
     <Route name="app" path="/" handler={App}>
         <DefaultRoute handler={MainPage} />
         <Route name="MyProjectsPage" handler={MyProjectsPage} />
+        <Route name="ConfigPage" handler={ConfigPage} />
     </Route>
 );
 
