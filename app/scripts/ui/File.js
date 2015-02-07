@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 
-var File = React.createClass({
+module.exports = React.createClass({
     propTypes: {
         fileName : React.PropTypes.string,
         onClick  : React.PropTypes.func
@@ -17,5 +17,3 @@ var File = React.createClass({
         );
     }
 });
-
-module.exports = File;

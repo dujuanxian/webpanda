@@ -2,7 +2,7 @@
 var React = require('react'),
     File = require('./File');
 
-var Sidebar = React.createClass({
+module.exports = React.createClass({
     propTypes : {
         fileNames: React.PropTypes.array,
         onFileClick: React.PropTypes.func
@@ -20,5 +20,3 @@ var Sidebar = React.createClass({
         );
     }
 });
-
-module.exports = Sidebar;

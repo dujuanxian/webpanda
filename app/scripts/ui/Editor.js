@@ -31,7 +31,7 @@ require('brace/mode/csharp');
 require('brace/mode/coffee');
 require('brace/mode/css');
 
-var Editor = React.createClass({
+module.exports = React.createClass({
     propTypes: {
         mode  : React.PropTypes.string,
         theme : React.PropTypes.string
@@ -60,5 +60,3 @@ var Editor = React.createClass({
         return (<section id={this.props.name}>{this.props.content}</section>);
     }
 });
-
-module.exports = Editor;

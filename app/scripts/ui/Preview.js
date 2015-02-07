@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 
-var Preview = React.createClass({
+module.exports = React.createClass({
     propTypes: {
         content: React.PropTypes.string
     },
@@ -12,5 +12,3 @@ var Preview = React.createClass({
         );
     }
 });
-
-module.exports = Preview;
