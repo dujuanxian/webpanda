@@ -41,6 +41,9 @@ gulp.task('scripts', function () {
     }));
 
     bundler.on('update', rebundle);
+    bundler.on('log', function (msg) {
+       console.log('watchify: ' + msg);
+    });
 
     function rebundle() {
         return bundler.bundle()
@@ -133,7 +136,15 @@ gulp.task('extras', function () {
 // Watch
 gulp.task('watch', ['html', 'bundle', 'serve', 'home'], function () {
     gulp.watch('app/scripts/**/*.json', ['json']);
-    gulp.watch('app/scripts/**/*.js', ['scripts']);
+
+    // NOTICE!!!
+    // we should NOT watch js by gulp, which is very slow
+    // to run `scripts` to browserify the whole file!
+    // `watchify` in `scripts` has already taken care of it,
+    // we don't need to do anything here
+    // ======================================================
+    // gulp.watch('app/scripts/**/*.js', ['scripts']);
+
     gulp.watch('app/*.html', ['html']);
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/template/**/*.jade', ['jade', 'html']);
