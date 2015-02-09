@@ -7,7 +7,7 @@ module.exports = React.createClass({
         fileNames: React.PropTypes.array.isRequired
     },
     render: function() {
-        var files = this.props.fileNames.map(n => <File fileName={n}/>);
+        var files = this.props.fileNames.map(name => <File key={name} fileName={name}/>);
         return (
             <section className="sidebar">
                 <h5>Project</h5>
