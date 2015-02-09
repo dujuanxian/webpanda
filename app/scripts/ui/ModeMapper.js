@@ -1,59 +1,23 @@
 var _ = require('lodash');
 
-var mappers = [
-    {
-        mode: 'javascript',
-        suffix: 'js'
-    },
-    {
-        mode: 'xml',
-        suffix: 'xml'
-    },
-    {
-        mode: 'ruby',
-        suffix: 'rb'
-    },
-    {
-        mode: 'sass',
-        suffix: 'sass'
-    },
-    {
-        mode: 'scss',
-        suffix: 'scss'
-    },
-    {
-        mode: 'less',
-        suffix: 'less'
-    },
-    {
-        mode: 'css',
-        suffix: 'css'
-    },
-    {
-        mode: 'markdown',
-        suffix: 'md'
-    },
-    {
-        mode: 'json',
-        suffix: 'json'
-    },
-    {
-        mode: 'html',
-        suffix: 'html'
-    },
-    {
-        mode: 'coffee',
-        suffix: 'coffee'
-    },
-    {
-        mode: 'text',
-        suffix: 'txt'
-    }
-];
+var mappers = {
+    'js': 'javascript',
+    'xml': 'xml',
+    'rb': 'ruby',
+    'sass': 'sass',
+    'scss': 'scss',
+    'less': 'less',
+    'css': 'css',
+    'md': 'markdown',
+    'json': 'json',
+    'html': 'html',
+    'coffee': 'coffee',
+    'txt': 'text'
+};
 
 module.exports = {
     getMode: function(fileName) {
         var suffix = _.last(fileName.split('.'));
-        return _.find(mappers, mapper => mapper.suffix === suffix).mode || 'txt';
+        return mappers[suffix] || 'text';
     }
 };
