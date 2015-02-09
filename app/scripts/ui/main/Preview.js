@@ -3,7 +3,7 @@ var React = require('react');
 
 module.exports = React.createClass({
     propTypes: {
-        content: React.PropTypes.string
+        content: React.PropTypes.string.isRequired
     },
     render: function() {
         return (

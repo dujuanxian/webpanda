@@ -29,13 +29,15 @@ require('brace/mode/text');
 
 module.exports = React.createClass({
     propTypes: {
-        mode  : React.PropTypes.string,
-        theme : React.PropTypes.string
+        name: React.PropTypes.string,
+        mode: React.PropTypes.string,
+        theme: React.PropTypes.string
     },
     getDefaultProps: function() {
         return {
-            name   : 'editor',
-            mode   : 'text'
+            name: 'editor',
+            mode: 'text',
+            theme: 'tomorrow'
         };
     },
     shouldComponentUpdate: function() {

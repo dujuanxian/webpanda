@@ -1,13 +1,13 @@
 /** @jsx React.DOM */
 var React = require('react');
+var Actions = require('../../actions');
 
 module.exports = React.createClass({
     propTypes: {
-        fileName : React.PropTypes.string,
-        onClick  : React.PropTypes.func
+        fileName: React.PropTypes.string.isRequired
     },
     onClick: function() {
-        this.props.onClick(this.props.fileName);
+        Actions.selectFile(this.props.fileName);
     },
     render: function() {
         return (
