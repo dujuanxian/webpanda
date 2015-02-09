@@ -49,6 +49,7 @@ module.exports = React.createClass({
         this.editor.setTheme('ace/theme/textmate');
     },
     componentWillReceiveProps: function(nextProps) {
+        this.editor.getSession().setMode('ace/mode/' + nextProps.mode);
         this.editor.setValue(nextProps.content);
     },
     render: function() {
