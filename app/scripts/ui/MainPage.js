@@ -4,6 +4,7 @@ var React = require('react'),
     files = require('../files'),
     Sidebar = require('./main/Sidebar'),
     Preview = require('./main/Preview'),
+    ModeMapper = require('./ModeMapper'),
     Editor = require('./main/Editor');
 
 var getFileNames = function() {
@@ -22,11 +23,14 @@ module.exports = React.createClass({
     getFileContent: function(fileName) {
         return _.find(files, file => file.name === fileName).content;
     },
+    getFileMode: function() {
+        return ModeMapper.getMode(this.state.currentFileName);
+    },
     render: function() {
         return (
             <div>
                 <Sidebar fileNames={getFileNames()} onFileClick={this.showFileContent}/>
-                <Editor name="editor" content={this.getFileContent(this.state.currentFileName)} theme="tomorrow" mode="javascript" ref="editor" />
+                <Editor name="editor" content={this.getFileContent(this.state.currentFileName)} mode={this.getFileMode()} ref="editor" />
                 <Preview content={this.getFileContent('index.html')}/>
             </div>
         );

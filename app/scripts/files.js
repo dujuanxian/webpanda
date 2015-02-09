@@ -13,5 +13,17 @@ module.exports = [
     {
         name: "README.md",
         content: "Just basic readme"
+    },
+    {
+        name: "main.js",
+        content: "/** @jsx React.DOM */" +
+        "\nvar React = require('react');" +
+        "\nmodule.exports = React.createClass({" +
+        "\n   render: function() {" +
+        "\n      return (" +
+        "\n          <div>my projects are here</div>" +
+        "\n      );" +
+        "\n   }" +
+        "\n});"
     }
 ];
