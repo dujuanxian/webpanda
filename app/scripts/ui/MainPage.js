@@ -2,10 +2,10 @@
 var React = require('react'),
     Sidebar = require('./main/Sidebar'),
     Preview = require('./main/Preview'),
-    ModeMapper = require('./ModeMapper'),
-    Editor = require('./main/Editor'),
     Reflux = require('reflux'),
-    stores = require('../stores');
+    stores = require('../stores'),
+    ModeMapper = require('./helper/ModeMapper'),
+    Editor = require('./main/Editor');
 
 module.exports = React.createClass({
     mixins: [Reflux.connect(stores, "project")],
@@ -16,7 +16,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <Sidebar fileNames={fileNames} />
-                <Editor content={project.getCurrentFileContent()} name="editor" theme="tomorrow" mode={mode} />
+                <Editor content={project.getCurrentFileContent()} name="editor" mode={mode} />
                 <Preview content={project.getFileContent('index.html')}/>
             </div>
         );
