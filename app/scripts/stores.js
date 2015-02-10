@@ -11,11 +11,11 @@ module.exports = Reflux.createStore({
         this.project = {
             files: files,
             currentFileName: _.first(files).name,
-            getCurrentFileContent: function() {
-                return this.getFileContent(this.currentFileName);
-            },
             getFileContent: function(fileName) {
                 return _.find(files, file => file.name === fileName).content;
+            },
+            getCurrentFile: function() {
+                return _.find(files, file => file.name === this.currentFileName);
             }
         };
         return this.project;
@@ -23,6 +23,13 @@ module.exports = Reflux.createStore({
     onSelectFile: function(fileName) {
         this.project.currentFileName = fileName;
         this.trigger(this.project);
+    },
+    onUpdateFile: function(fileName, content){
+        this.project.files.map(file => {
+            if (file.name === fileName) {
+                file.content = content;
+            }
+        });
     }
 });
 

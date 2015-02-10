@@ -2,6 +2,7 @@
 
 var ace = require('brace');
 var React = require('react');
+var Actions = require('../../actions');
 require('brace/theme/textmate');
 require('../helper/ModeDependencies');
 
@@ -27,10 +28,11 @@ module.exports = React.createClass({
         this.editor.setTheme('ace/theme/textmate');
     },
     componentWillReceiveProps: function(nextProps) {
+        Actions.updateFile(this.props.file.name, this.editor.getValue());
         this.editor.getSession().setMode('ace/mode/' + nextProps.mode);
-        this.editor.setValue(nextProps.content);
+        this.editor.setValue(nextProps.file.content);
     },
     render: function() {
-        return (<section id={this.props.name}>{this.props.content}</section>);
+        return (<section id={this.props.name}>{this.props.file.content}</section>);
     }
 });
