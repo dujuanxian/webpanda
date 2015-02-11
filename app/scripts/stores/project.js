@@ -25,11 +25,10 @@ module.exports = Reflux.createStore({
         this.trigger(this.project);
     },
     onUpdateFile: function(fileName, content) {
-        this.project.files.map(file => {
-            if (file.name === fileName) {
-                file.content = content;
-            }
-        });
+        var file = _.find(this.project.files, file => file.name === fileName);
+        if (file != null) {
+            file.content = content;
+        }
     }
 });
 
