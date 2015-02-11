@@ -4,10 +4,14 @@ module.exports = [
         content: "<!doctype html>\n" +
         "  <head>\n" +
         "    <title>index</title>\n" +
+        "    <link rel='stylesheet' href='main.css'>\n" +
+        "    <script src='http://fb.me/react-0.8.0.js'></script>\n" +
+        "    <script src='http://fb.me/JSXTransformer-0.8.0.js'></script>\n" +
         "  </head>\n" +
         "  <body>\n" +
         "    this is index content\n" +
         "  </body>\n" +
+        "  <script src='app.js'></script>\n" +
         "</html>\n"
     },
     {
@@ -15,15 +19,25 @@ module.exports = [
         content: "Just basic readme"
     },
     {
-        name: "main.js",
+        name: "app.js",
         content: "/** @jsx React.DOM */" +
         "\nvar React = require('react');" +
-        "\nmodule.exports = React.createClass({" +
+        "\nvar App = React.createClass({" +
         "\n   render: function() {" +
         "\n      return (" +
         "\n          <div>my projects are here</div>" +
         "\n      );" +
         "\n   }" +
-        "\n});"
+        "\n});" +
+        "\nReact.renderComponent(<APP />,document.body);"
+    },
+    {
+        name: "main.css",
+        content:
+        "body {" +
+            "margin: 0;" +
+            "padding: 10px;" +
+            "color: #ccc;" +
+        "}"
     }
 ];

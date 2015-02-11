@@ -16,7 +16,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <Sidebar fileNames={fileNames} />
-                <Editor file={project.getCurrentFile()} name="editor" mode={mode} />
+                <Editor fileName={project.currentFileName} name="editor" mode={mode} />
                 <Preview content={project.getFileContent('index.html')}/>
             </div>
         );
