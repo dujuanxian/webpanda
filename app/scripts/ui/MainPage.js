@@ -4,7 +4,7 @@ var React = require('react'),
     Preview = require('./main/Preview'),
     Reflux = require('reflux'),
     stores = require('../stores'),
-    ModeMapper = require('./helper/ModeMapper'),
+    ModeMapper = require('../helper/ModeMapper'),
     Editor = require('./main/Editor');
 
 module.exports = React.createClass({

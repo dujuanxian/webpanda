@@ -4,7 +4,7 @@ var ace = require('brace');
 var React = require('react');
 var Actions = require('../../actions');
 require('brace/theme/textmate');
-require('../helper/ModeDependencies');
+require('../../helper/ModeDependencies');
 
 module.exports = React.createClass({
     propTypes: {
