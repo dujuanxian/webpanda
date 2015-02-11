@@ -1,13 +1,13 @@
 /** @jsx React.DOM */
 var React = require('react');
-var Actions = require('../../actions');
+var ProjectActions = require('../../actions/project');
 
 module.exports = React.createClass({
     propTypes: {
         fileName: React.PropTypes.string.isRequired
     },
     onClick: function() {
-        Actions.selectFile(this.props.fileName);
+        ProjectActions.selectFile(this.props.fileName);
     },
     render: function() {
         return (

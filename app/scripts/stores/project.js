@@ -1,12 +1,12 @@
 /** @jsx React.DOM */
 var React = require('react');
-var Actions = require('./actions');
-var files = require('./files');
 var Reflux = require('reflux');
 var _ = require('lodash');
+var ProjectActions = require('../actions/project');
+var files = require('../files');
 
 module.exports = Reflux.createStore({
-    listenables: [Actions],
+    listenables: [ProjectActions],
     getInitialState: function() {
         this.project = {
             files: files,
@@ -24,7 +24,7 @@ module.exports = Reflux.createStore({
         this.project.currentFileName = fileName;
         this.trigger(this.project);
     },
-    onUpdateFile: function(fileName, content){
+    onUpdateFile: function(fileName, content) {
         this.project.files.map(file => {
             if (file.name === fileName) {
                 file.content = content;

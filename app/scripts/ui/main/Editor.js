@@ -2,7 +2,7 @@
 
 var ace = require('brace');
 var React = require('react');
-var Actions = require('../../actions');
+var ProjectActions = require('../../actions/project');
 require('brace/theme/textmate');
 require('../../helper/ModeDependencies');
 
@@ -28,7 +28,7 @@ module.exports = React.createClass({
         this.editor.setTheme('ace/theme/textmate');
     },
     componentWillReceiveProps: function(nextProps) {
-        Actions.updateFile(this.props.file.name, this.editor.getValue());
+        ProjectActions.updateFile(this.props.file.name, this.editor.getValue());
         this.editor.getSession().setMode('ace/mode/' + nextProps.mode);
         this.editor.setValue(nextProps.file.content);
     },

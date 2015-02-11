@@ -3,12 +3,12 @@ var React = require('react'),
     Sidebar = require('./main/Sidebar'),
     Preview = require('./main/Preview'),
     Reflux = require('reflux'),
-    stores = require('../stores'),
     ModeMapper = require('../helper/ModeMapper'),
-    Editor = require('./main/Editor');
+    Editor = require('./main/Editor'),
+    projectStore = require('../stores/project');
 
 module.exports = React.createClass({
-    mixins: [Reflux.connect(stores, "project")],
+    mixins: [Reflux.connect(projectStore, "project")],
     render: function() {
         var project = this.state.project;
         var fileNames = project.files.map(f => f.name);
