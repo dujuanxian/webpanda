@@ -23,10 +23,6 @@ module.exports = Reflux.createStore({
     onAddLibrary: function(name, version, url, download) {
         this.libraries.names.push(name);
         this.trigger(this.libraries);
-    },
-    onImportLibrary: function(name) {
-        console.log('### name: ' + name);
-        this.trigger(this.libraries);
     }
 });
 

@@ -32,6 +32,10 @@ module.exports = Reflux.createStore({
     },
     onUpdatePreview: function() {
         this.trigger(this.project);
+    },
+    onImportLibrary: function(name) {
+        console.log('### name: ' + name);
+        this.trigger(this.project);
     }
 });
 

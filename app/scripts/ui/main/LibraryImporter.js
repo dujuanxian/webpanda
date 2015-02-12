@@ -1,12 +1,12 @@
 /** @jsx React.DOM */
 var React = require('react');
-var LibrariesActions = require('../../actions/libraries');
+var ProjectActions = require('../../actions/project');
 
 module.exports = React.createClass({
     propTypes: {
         libraries: React.PropTypes.array.isRequired
     },
-    importLibrary: (lib) => LibrariesActions.importLibrary.bind(this, lib.name),
+    importLibrary: (lib) => ProjectActions.importLibrary.bind(this, lib.name),
     render: function() {
         return (
             <span>
