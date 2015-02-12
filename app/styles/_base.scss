@@ -1,4 +1,4 @@
-$header-height: 70px;
+$header-height: 50px;
 $base-color: #555;
 
 @mixin text-rendering($style) {
@@ -6,4 +6,12 @@ $base-color: #555;
     -ms-text-rendering: $style;
     -o-text-rendering: $style;
     text-rendering: $style;
+}
+
+@mixin button($height, $bg-color, $color, $radius) {
+    line-height: $height;
+    height: $height;
+    background: $bg-color;
+    border-radius: $radius;
+    color: $color;
 }

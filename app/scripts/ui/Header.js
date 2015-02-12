@@ -10,7 +10,7 @@ module.exports = React.createClass({
                 <nav>
                     <ul>
                         <li><Link to="/">Editor</Link></li>
-                        <li><Link to="MyProjectsPage">MyProjectsPage</Link></li>
+                        <li><Link to="MyProjectsPage">Project</Link></li>
                         <li><Link to="ConfigPage">Config</Link></li>
                     </ul>
                 </nav>
