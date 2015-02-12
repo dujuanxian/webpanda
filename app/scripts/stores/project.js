@@ -13,6 +13,9 @@ module.exports = Reflux.createStore({
             currentFileName: _.first(files).name,
             getFileContent: function(fileName) {
                 return _.find(files, file => file.name === fileName).content;
+            },
+            getCurrentFile: function() {
+                return _.find(files, file => file.name === this.currentFileName);
             }
         };
         return this.project;
@@ -20,6 +23,12 @@ module.exports = Reflux.createStore({
     onSelectFile: function(fileName) {
         this.project.currentFileName = fileName;
         this.trigger(this.project);
+    },
+    onUpdateFile: function(fileName, content) {
+        var file = _.find(this.project.files, file => file.name === fileName);
+        if (file != null) {
+            file.content = content;
+        }
     }
 });
 
