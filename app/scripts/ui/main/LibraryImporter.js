@@ -9,13 +9,15 @@ module.exports = React.createClass({
     importLibrary: (lib) => ProjectActions.importLibrary.bind(this, lib.name),
     render: function() {
         return (
-            <span>
+            <header className="main-header">
                 <ul>
-                    {this.props.libraries.map(lib => <li>
-                        <button onClick={this.importLibrary(lib)}>{lib.name}</button>
-                    </li>)}
+                    {this.props.libraries.map(lib =>
+                        <li>
+                            <button onClick={this.importLibrary(lib)}>{lib.name}</button>
+                        </li>
+                    )}
                 </ul>
-            </span>
+            </header>
         );
     }
 });

@@ -1,0 +1,35 @@
+header.page-header {
+    background: #eaeaea url('../images/bg.png');
+    position: fixed;
+    width: 100%;
+    height: $header-height;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0 5%;
+    box-sizing: border-box;
+    h1 {
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.3);
+        text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+        @include text-rendering(optimizeLegibility);
+        display: inline-block;
+    }
+    nav {
+        float: right;
+        display: inline-block;
+        ul {
+            line-height: 43px;
+            padding: 0;
+            li {
+                display: inline-block;
+                a {
+                    display: block;
+                    outline: none;
+                    color: rgba(0,0,0,0.4);
+                    text-shadow: 1px 1px #fff;
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+}
+

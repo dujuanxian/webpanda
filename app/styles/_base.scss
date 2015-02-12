@@ -1,0 +1,9 @@
+$header-height: 70px;
+$base-color: #555;
+
+@mixin text-rendering($style) {
+    -moz-text-rendering: $style;
+    -ms-text-rendering: $style;
+    -o-text-rendering: $style;
+    text-rendering: $style;
+}

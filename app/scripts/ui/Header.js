@@ -5,7 +5,7 @@ var {Link} = require('react-router');
 module.exports = React.createClass({
     render: function() {
         return (
-            <header>
+            <header className="page-header">
                 <h1>Web Panda</h1>
                 <nav>
                     <ul>
@@ -13,7 +13,6 @@ module.exports = React.createClass({
                         <li><Link to="MyProjectsPage">MyProjectsPage</Link></li>
                         <li><Link to="ConfigPage">Config</Link></li>
                     </ul>
-
                 </nav>
             </header>
         );
