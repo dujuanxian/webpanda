@@ -1,5 +1,12 @@
 .preview {
     width: 40%;
     float: right;
-    padding: 10px;
+    position: relative;
+    button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        height: 30px;
+        width: 100px;
+    }
 }

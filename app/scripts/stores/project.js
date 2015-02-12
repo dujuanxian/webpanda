@@ -29,6 +29,9 @@ module.exports = Reflux.createStore({
         if (file != null) {
             file.content = content;
         }
+    },
+    onUpdatePreview: function() {
+        this.trigger(this.project);
     }
 });
 
