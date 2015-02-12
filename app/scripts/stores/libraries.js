@@ -2,26 +2,16 @@
 var React = require('react');
 var Reflux = require('reflux');
 var LibrariesActions = require('../actions/libraries');
+var {libs: libs, helper} = require('../libraries');
 
 module.exports = Reflux.createStore({
     listenables: [LibrariesActions],
     getInitialState: function() {
-        this.libraries = [
-            {
-                name: 'jquery',
-                version: '1.9.1',
-                localPath: "app/libraries/jquery-1.9.1.js"
-            },
-            {
-                name: 'react-with-addons',
-                version: '0.12.2',
-                localPath: "app/libraries/react-with-addons-0.12.2.js"
-            }
-        ];
+        this.libraries = libs;
         return this.libraries;
     },
     onAddLibrary: function(name, version, url, download) {
-        this.libraries.names.push(name);
+        console.log("### onAddLibrary: " + name);
         this.trigger(this.libraries);
     }
 });

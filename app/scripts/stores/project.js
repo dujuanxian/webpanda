@@ -4,6 +4,16 @@ var Reflux = require('reflux');
 var _ = require('lodash');
 var ProjectActions = require('../actions/project');
 var files = require('../files');
+var {libs: libs, helper} = require('../libraries');
+
+function _generateScript(libName) {
+    var src = helper.find(libName).path;
+    return "<script type='text/javascript' src='" + src + "'></script>";
+}
+
+function _insertLibrary(file, libName) {
+    return file.content + "\n" + _generateScript(libName);
+}
 
 module.exports = Reflux.createStore({
     listenables: [ProjectActions],
@@ -11,11 +21,17 @@ module.exports = Reflux.createStore({
         this.project = {
             files: files,
             currentFileName: _.first(files).name,
+            getFile: function(fileName) {
+                return _.find(files, file => file.name === fileName);
+            },
+            getIndexFile: function() {
+                return this.getFile("index.html");
+            },
             getFileContent: function(fileName) {
-                return _.find(files, file => file.name === fileName).content;
+                return this.getFile(fileName).content;
             },
             getCurrentFile: function() {
-                return _.find(files, file => file.name === this.currentFileName);
+                return this.getFile(this.currentFileName);
             }
         };
         return this.project;
@@ -33,8 +49,9 @@ module.exports = Reflux.createStore({
     onUpdatePreview: function() {
         this.trigger(this.project);
     },
-    onImportLibrary: function(name) {
-        console.log('### name: ' + name);
+    onImportLibrary: function(libName) {
+        var indexFile = this.project.getIndexFile();
+        indexFile.content = _insertLibrary(indexFile, libName);
         this.trigger(this.project);
     }
 });
