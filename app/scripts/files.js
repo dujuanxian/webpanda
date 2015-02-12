@@ -2,6 +2,7 @@ module.exports = [
     {
         name: "index.html",
         content: "<!doctype html>\n" +
+        "<html>\n" +
         "  <head>\n" +
         "    <title>index</title>\n" +
         "  </head>\n" +
