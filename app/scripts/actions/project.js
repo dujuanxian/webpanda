@@ -4,5 +4,5 @@ var Reflux = require('reflux');
 
 module.exports = {
     selectFile: Reflux.createAction(),
-    updateFile: Reflux.createAction()
+    updateCurrentFile: Reflux.createAction()
 };

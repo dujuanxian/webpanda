@@ -24,8 +24,8 @@ module.exports = Reflux.createStore({
         this.project.currentFileName = fileName;
         this.trigger(this.project);
     },
-    onUpdateFile: function(fileName, content) {
-        var file = _.find(this.project.files, file => file.name === fileName);
+    onUpdateCurrentFile: function(content) {
+        var file = _.find(this.project.files, file => file.name === this.project.currentFileName);
         if (file != null) {
             file.content = content;
         }

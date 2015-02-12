@@ -26,9 +26,11 @@ module.exports = React.createClass({
         this.editor = ace.edit(this.props.name);
         this.editor.getSession().setMode('ace/mode/' + this.props.mode);
         this.editor.setTheme('ace/theme/textmate');
+        this.editor.on('input', () => {
+            ProjectActions.updateCurrentFile(this.editor.getValue());
+        });
     },
     componentWillReceiveProps: function(nextProps) {
-        ProjectActions.updateFile(this.props.file.name, this.editor.getValue());
         this.editor.getSession().setMode('ace/mode/' + nextProps.mode);
         this.editor.setValue(nextProps.file.content);
     },
