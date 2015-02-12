@@ -5,7 +5,7 @@
     float: left;
     display: block;
     position: fixed;
-    border-right: 1px solid #e5e5e5;
+    border-right: $border;
     h5, .file-name {
         padding-left: 10px;
         border-bottom: 1px solid rgba(200,200,200,0.2);

@@ -1,5 +1,6 @@
 $header-height: 50px;
 $base-color: #555;
+$border: 1px solid #e5e5e5;
 
 @mixin text-rendering($style) {
     -moz-text-rendering: $style;

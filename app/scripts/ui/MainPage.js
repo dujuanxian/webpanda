@@ -25,7 +25,7 @@ module.exports = React.createClass({
             <main>
                 <LibraryImporter libraries={libraries} />
                 <Sidebar fileNames={fileNames} />
-                <CodeMirrorEditor style={{border: '1px solid #e5e5e5'}} defaultValue={project.getCurrentFile()} mode='htmlembedded' theme='solarized' lineNumbers='true' className="editor"/>
+                <CodeMirrorEditor defaultValue={project.getCurrentFile()} mode='htmlembedded' theme='solarized' lineNumbers='true' className="editor"/>
                 <Preview styles={project.getFileContent('main.css')} content={project.getFileContent('index.html')}/>
             </main>
         );
