@@ -1,19 +1,22 @@
 /** @jsx React.DOM */
-var React = require('react');
-var ProjectActions = require('../../actions/project');
+var React = require('react'),
+    Frame = require('./Frame'),
+    projectActions = require('../../actions/project');
 
 module.exports = React.createClass({
-    propTypes: {
-        content: React.PropTypes.string.isRequired
-    },
     updateContent: function(e) {
         e.preventDefault();
-        ProjectActions.updatePreview();
+        projectActions.updatePreview();
     },
     render: function() {
         return (
             <div className="preview">
-                <section dangerouslySetInnerHTML={{__html: this.props.content}} />
+                <Frame>
+                    <section>
+                        <style>{this.props.styles}</style>
+                        <p dangerouslySetInnerHTML={{__html: this.props.content}} />
+                    </section>
+                </Frame>
                 <button onClick={this.updateContent} type="button">Run</button>
             </div>
         );

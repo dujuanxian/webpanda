@@ -25,7 +25,7 @@ module.exports = React.createClass({
                 <LibraryImporter libraries={libraries} />
                 <Sidebar fileNames={fileNames} />
                 <Editor file={project.getCurrentFile()} name="editor" mode={mode} />
-                <Preview content={project.getFileContent('index.html')}/>
+                <Preview styles={project.getFileContent('main.css')} content={project.getFileContent('index.html')}/>
             </div>
         );
     }

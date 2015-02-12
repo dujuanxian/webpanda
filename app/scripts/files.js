@@ -26,5 +26,14 @@ module.exports = [
         "\n      );" +
         "\n   }" +
         "\n});"
+    },
+    {
+        name: "main.css",
+        content:
+        "body {" +
+        "margin: 0;" +
+        "padding: 10px;" +
+        "color: blue;" +
+        "}"
     }
 ];

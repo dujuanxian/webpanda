@@ -2,6 +2,12 @@
     width: 40%;
     float: right;
     position: relative;
+    iframe {
+        z-index: 100;
+        position: fixed;
+        border: none;
+        width: 100%;
+    }
     button {
         position: absolute;
         top: 10px;
