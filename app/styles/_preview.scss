@@ -12,7 +12,10 @@
         position: absolute;
         top: 10px;
         right: 10px;
-        height: 30px;
-        width: 100px;
+        padding: 0 20px;
+        font-size: 14px;
+        font-weight: bold;
+        border: none;
+        @include button(30px, #20c05c, #fff, 4px);
     }
 }
