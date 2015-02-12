@@ -8,6 +8,7 @@ var Editor = require('./main/Editor');
 var projectStore = require('../stores/project');
 var LibraryImporter = require('./main/LibraryImporter');
 var librariesStore = require('../stores/libraries');
+var CodeMirrorEditor = require('./main/CodeMirrorEditor');
 
 module.exports = React.createClass({
     mixins: [
@@ -24,7 +25,7 @@ module.exports = React.createClass({
             <main>
                 <LibraryImporter libraries={libraries} />
                 <Sidebar fileNames={fileNames} />
-                <Editor file={project.getCurrentFile()} name="editor" mode={mode} />
+                <CodeMirrorEditor style={{border: '1px solid #e5e5e5'}} defaultValue={project.getCurrentFile()} mode='htmlembedded' theme='solarized' lineNumbers='true' className="editor"/>
                 <Preview styles={project.getFileContent('main.css')} content={project.getFileContent('index.html')}/>
             </main>
         );

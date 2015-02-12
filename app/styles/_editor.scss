@@ -1,8 +1,11 @@
-#editor {
+.editor {
     width: 40%;
     height: 100%;
     float: left;
     margin-left: 20%;
     position: fixed;
     border-right: 1px solid #e5e5e5;
+    .CodeMirror {
+        height: 100% !important;
+    }
 }

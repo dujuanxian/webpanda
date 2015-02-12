@@ -31,7 +31,8 @@
     "underscore.string": "^3.0.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
-    "watchify": "~2.1"
+    "watchify": "~2.1",
+    "codemirror": "4.12.0"
   },
   "engines": {
     "node": ">=0.10.0"
