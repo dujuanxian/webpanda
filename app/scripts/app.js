@@ -1,11 +1,10 @@
 /** @jsx React.DOM */
 
-var React = window.React = require('react'),
-    Header = require('./ui/Header'),
-    MyProjectsPage = require('./ui/MyProjectsPage'),
-    ConfigPage = require('./ui/ConfigPage'),
-    MainPage = require('./ui/MainPage');
-
+var React = window.React = require('react');
+var Header = require('./ui/Header');
+var MyProjectsPage = require('./ui/MyProjectsPage');
+var ConfigPage = require('./ui/ConfigPage');
+var MainPage = require('./ui/MainPage');
 var Router = require('react-router');
 var {DefaultRoute,Link,Route,RouteHandler} = Router;
 

@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
-var React = require('react'),
-    Frame = require('./Frame'),
-    projectActions = require('../../actions/project');
+var React = require('react');
+var Frame = require('./Frame');
+var projectActions = require('../../actions/project');
 
 module.exports = React.createClass({
     updateContent: function(e) {

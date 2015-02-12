@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
-var React = require('react'),
-    File = require('./File');
+var React = require('react');
+var File = require('./File');
 
 module.exports = React.createClass({
     propTypes: {
