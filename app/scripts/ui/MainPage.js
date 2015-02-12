@@ -21,12 +21,12 @@ module.exports = React.createClass({
         var fileNames = project.files.map(f => f.name);
         var mode = ModeMapper.getMode(project.currentFileName);
         return (
-            <div>
+            <main>
                 <LibraryImporter libraries={libraries} />
                 <Sidebar fileNames={fileNames} />
                 <Editor file={project.getCurrentFile()} name="editor" mode={mode} />
                 <Preview styles={project.getFileContent('main.css')} content={project.getFileContent('index.html')}/>
-            </div>
+            </main>
         );
     }
 });

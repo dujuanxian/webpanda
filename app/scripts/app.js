@@ -13,7 +13,6 @@ var App = React.createClass({
         return (
             <div>
                 <Header />
-                <hr />
                 <RouteHandler/>
             </div>
         );
