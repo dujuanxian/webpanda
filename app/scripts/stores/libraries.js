@@ -2,7 +2,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var LibrariesActions = require('../actions/libraries');
-var {libs: libs, helper} = require('../libraries');
+var {libs, helper} = require('../libraries');
 
 module.exports = Reflux.createStore({
     listenables: [LibrariesActions],

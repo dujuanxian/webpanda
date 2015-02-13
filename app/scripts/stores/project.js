@@ -4,7 +4,7 @@ var Reflux = require('reflux');
 var _ = require('lodash');
 var ProjectActions = require('../actions/project');
 var files = require('../files');
-var {libs: libs, helper} = require('../libraries');
+var {libs, helper} = require('../libraries');
 var _str = require("underscore.string");
 
 
