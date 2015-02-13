@@ -4,12 +4,11 @@ var Sidebar = require('./main/Sidebar');
 var Preview = require('./main/Preview');
 var Reflux = require('reflux');
 var ModeMapper = require('../helper/ModeMapper');
-var Editor = require('./main/Editor');
 var projectStore = require('../stores/project');
 var LibraryImporter = require('./main/LibraryImporter');
 var librariesStore = require('../stores/libraries');
 var ProjectActions = require('../actions/project');
-var CodeMirrorEditor = require('./main/CodeMirrorEditor');
+var Editor = require('./main/Editor');
 
 module.exports = React.createClass({
     mixins: [
@@ -29,7 +28,7 @@ module.exports = React.createClass({
             <main>
                 <LibraryImporter libraries={libraries} />
                 <Sidebar fileNames={fileNames} />
-                <CodeMirrorEditor
+                <Editor
                     onChange={this.handleChange}
                     content={project.getCurrentFile().content}
                     defaultValue={project.getCurrentFile().content}

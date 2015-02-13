@@ -1,40 +1,68 @@
 /** @jsx React.DOM */
 
-var ace = require('brace');
 var React = require('react');
-var ProjectActions = require('../../actions/project');
-require('brace/theme/textmate');
+var CodeMirror = require('codemirror');
 require('../../helper/ModeDependencies');
 
-module.exports = React.createClass({
+var CodeMirrorEditor = React.createClass({
+    getInitialState: function() {
+        return { isControlled: this.props.value != null };
+    },
+
     propTypes: {
-        name: React.PropTypes.string,
-        mode: React.PropTypes.string
+        value: React.PropTypes.string,
+        defaultValue: React.PropTypes.string,
+        style: React.PropTypes.object,
+        className: React.PropTypes.string,
+        onChange: React.PropTypes.func
     },
-    getDefaultProps: function() {
-        return {
-            name: 'editor',
-            mode: 'text'
-        };
-    },
-    shouldComponentUpdate: function() {
-        return false;
-    },
+
     componentDidMount: function() {
-        // `editor` is nothing to do with `render`, so we can put it in `this`
-        // see: http://stackoverflow.com/a/28346344/342235
-        this.editor = ace.edit(this.props.name);
-        this.editor.getSession().setMode('ace/mode/' + this.props.mode);
-        this.editor.setTheme('ace/theme/textmate');
-        this.editor.on('input', () => {
-            ProjectActions.updateCurrentFile(this.editor.getValue());
-        });
+        this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), this.props);
+        this.editor.on('change', this.handleChange);
     },
-    componentWillReceiveProps: function(nextProps) {
-        this.editor.getSession().setMode('ace/mode/' + nextProps.mode);
-        this.editor.setValue(nextProps.file.content);
+
+    componentDidUpdate: function() {
+        if (this.editor) {
+            if (this.props.content != null) {
+                if (this.editor.getValue() !== this.props.content) {
+                    this.editor.setValue(this.props.content);
+                    this.editor.setOption("mode", this.props.mode);
+                }
+            }
+        }
     },
+
+    handleChange: function() {
+        if (this.editor) {
+            var value = this.editor.getValue();
+            if (value !== this.props.content) {
+                this.props.onChange && this.props.onChange({value: value});
+                if (this.editor.getValue() !== this.props.content) {
+                    if (this.state.isControlled) {
+                        this.editor.setValue(this.props.content);
+                    } else {
+                        this.props.content = value;
+                    }
+                }
+            }
+        }
+    },
+
     render: function() {
-        return (<section id={this.props.name}>{this.props.file.content}</section>);
+        var editor = React.createElement('textarea', {
+            ref: 'editor',
+            value: this.props.value,
+            readOnly: this.props.readOnly,
+            defaultValue: this.props.defaultValue,
+            onChange: this.props.onChange,
+            style: {height: '100%'},
+            className: 'form-control',
+            mode: this.props.mode
+        });
+
+        return React.createElement('div', {style: this.props.style, className: this.props.className}, editor);
     }
 });
+
+module.exports = CodeMirrorEditor;
