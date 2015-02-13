@@ -36,7 +36,10 @@ module.exports = Reflux.createStore({
                 return _.find(files, file => file.name === fileName);
             },
             getIndexFile: function() {
-                return this.getFile("index.html");
+                return this.getFile('index.html');
+            },
+            selectIndexFile: function() {
+                this.currentFileName = 'index.html';
             },
             getFileContent: function(fileName) {
                 return this.getFile(fileName).content;
@@ -63,6 +66,7 @@ module.exports = Reflux.createStore({
     onImportLibrary: function(libName) {
         var indexFile = this.project.getIndexFile();
         indexFile.content = _insertLibrary(indexFile, libName);
+        this.project.selectIndexFile();
         this.trigger(this.project);
     }
 });
