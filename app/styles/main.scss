@@ -1,10 +1,10 @@
-@import "base";
-@import "header";
-@import "sidebar";
-@import "preview";
-@import "./codemirror";
-@import "./solarized";
-@import "editor";
+@import "./common/base";
+@import "partials/header";
+@import "partials/sidebar";
+@import "partials/preview";
+@import "./vendor/codemirror";
+@import "./vendor/solarized";
+@import "partials/editor";
 
 head,
 body {
