@@ -5,7 +5,6 @@ var Preview = require('./main/Preview');
 var Reflux = require('reflux');
 var ModeMapper = require('../helper/ModeMapper');
 var projectStore = require('../stores/project');
-var LibraryImporter = require('./main/LibraryImporter');
 var librariesStore = require('../stores/libraries');
 var ProjectActions = require('../actions/project');
 var Editor = require('./main/Editor');
@@ -26,8 +25,7 @@ module.exports = React.createClass({
         var mode = ModeMapper.getMode(project.currentFileName);
         return (
             <main>
-                <LibraryImporter libraries={libraries} />
-                <Sidebar fileNames={fileNames} />
+                <Sidebar fileNames={fileNames} libraries={libraries} />
                 <Editor
                     onChange={this.handleChange}
                     content={project.getCurrentFile().content}
