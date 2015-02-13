@@ -72,6 +72,13 @@ gulp.task('html', function () {
         .pipe($.size());
 });
 
+//Font
+gulp.task('font', function() {
+    return gulp.src('app/font/*')
+        .pipe(gulp.dest('dist/font'))
+        .pipe($.size());
+});
+
 // Images
 gulp.task('images', function () {
     return gulp.src('app/images/**/*')
@@ -151,7 +158,7 @@ gulp.task('watch', ['html', 'bundle', 'serve', 'home'], function () {
 });
 
 // Build
-gulp.task('build', ['html', 'bundle', 'images', 'extras']);
+gulp.task('build', ['html', 'bundle', 'images', 'font', 'extras']);
 
 // Default task
 gulp.task('default', ['clean', 'build', 'jest' ]);

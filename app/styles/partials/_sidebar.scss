@@ -6,11 +6,21 @@
     display: block;
     position: fixed;
     border-right: $border;
-    h5, .file-name {
-        padding-left: 10px;
+    .title, .file-name {
+        padding: 0 10px;
         border-bottom: 1px solid rgba(200,200,200,0.2);
         line-height: 30px;
         margin: 0;
+    }
+    .title {
+        h5 {
+            display: inline-block;
+            margin: 0;
+        }
+        i {
+            float: right;
+
+        }
     }
     .file-name {
         background-color: #FAFAFA;

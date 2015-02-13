@@ -12,9 +12,12 @@ module.exports = React.createClass({
         var files = this.props.fileNames.map(name => <File key={name} fileName={name}/>);
         return (
             <section className="sidebar">
-                <h5>Project
-                    <LibraryImporter libraries={this.props.libraries} />
-                </h5>
+                <div className="title">
+                    <h5>Project
+                        <LibraryImporter libraries={this.props.libraries} />
+                    </h5>
+                    <i className="icon-plus-circle"></i>
+                </div>
                 {files}
             </section>
         );
