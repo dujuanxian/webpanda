@@ -6,18 +6,22 @@ module.exports = React.createClass({
     propTypes: {
         libraries: React.PropTypes.array.isRequired
     },
-    importLibrary: (lib) => ProjectActions.importLibrary.bind(this, lib.name),
+    importLibrary: (event) => {
+        var libName = event.target.value;
+        if (libName) {
+            ProjectActions.importLibrary(libName);
+        }
+    },
     render: function() {
         return (
-            <header className="main-header">
-                <ul>
+            <span className="library-importer">
+                <select onChange={this.importLibrary}>
+                    <option value=''>import library ...</option>
                     {this.props.libraries.map(lib =>
-                        <li>
-                            <button onClick={this.importLibrary(lib)}>{lib.name}</button>
-                        </li>
+                            <option value={lib.name}>{lib.name}</option>
                     )}
-                </ul>
-            </header>
+                </select>
+            </span>
         );
     }
 });

@@ -16,7 +16,7 @@ module.exports = React.createClass({
                     <h5>Project
                         <LibraryImporter libraries={this.props.libraries} />
                     </h5>
-                    <i className="icon-plus-circle"></i>
+
                 </div>
                 {files}
             </section>

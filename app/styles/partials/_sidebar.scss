@@ -14,7 +14,6 @@
     }
     .title {
         h5 {
-            display: inline-block;
             margin: 0;
         }
         i {
@@ -25,5 +24,8 @@
     .file-name {
         background-color: #FAFAFA;
         cursor: pointer;
+    }
+    .library-importer {
+        float: right;
     }
 }
