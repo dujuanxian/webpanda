@@ -5,6 +5,8 @@ var _ = require('lodash');
 var ProjectActions = require('../actions/project');
 var files = require('../files');
 var {libs: libs, helper} = require('../libraries');
+var _str = require("underscore.string");
+
 
 function _generateScript(libName) {
     var src = helper.find(libName).path;
@@ -12,7 +14,16 @@ function _generateScript(libName) {
 }
 
 function _insertLibrary(file, libName) {
-    return file.content + "\n" + _generateScript(libName);
+    var headIndex = file.content.indexOf('</head>');
+    var scripts;
+    if (headIndex == -1) {
+        headIndex = 0;
+        scripts = _generateScript(libName) + "\n";
+    } else {
+        scripts = "  " + _generateScript(libName) + "\n  ";
+    }
+
+    return _str.insert(file.content, headIndex, scripts);
 }
 
 module.exports = Reflux.createStore({
