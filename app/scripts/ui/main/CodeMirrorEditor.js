@@ -2,7 +2,7 @@
 
 var React = require('react');
 var CodeMirror = require('codemirror');
-require('codemirror/mode/htmlembedded/htmlembedded');
+require('../../helper/ModeDependencies');
 
 var CodeMirrorEditor = React.createClass({
     getInitialState: function() {
@@ -18,18 +18,16 @@ var CodeMirrorEditor = React.createClass({
     },
 
     componentDidMount: function() {
-        var isTextArea = this.props.forceTextArea;
-        if (!isTextArea) {
-            this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), this.props);
-            this.editor.on('change', this.handleChange);
-        }
+        this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), this.props);
+        this.editor.on('change', this.handleChange);
     },
 
     componentDidUpdate: function() {
         if (this.editor) {
-            if (this.props.value != null) {
-                if (this.editor.getValue() !== this.props.value) {
-                    this.editor.setValue(this.props.value);
+            if (this.props.content != null) {
+                if (this.editor.getValue() !== this.props.content) {
+                    this.editor.setValue(this.props.content);
+                    this.editor.setOption("mode", this.props.mode);
                 }
             }
         }
@@ -38,13 +36,13 @@ var CodeMirrorEditor = React.createClass({
     handleChange: function() {
         if (this.editor) {
             var value = this.editor.getValue();
-            if (value !== this.props.value) {
-                this.props.onChange && this.props.onChange({target: {value: value}});
-                if (this.editor.getValue() !== this.props.value) {
+            if (value !== this.props.content) {
+                this.props.onChange && this.props.onChange({value: value});
+                if (this.editor.getValue() !== this.props.content) {
                     if (this.state.isControlled) {
-                        this.editor.setValue(this.props.value);
+                        this.editor.setValue(this.props.content);
                     } else {
-                        this.props.value = value;
+                        this.props.content = value;
                     }
                 }
             }
@@ -56,10 +54,11 @@ var CodeMirrorEditor = React.createClass({
             ref: 'editor',
             value: this.props.value,
             readOnly: this.props.readOnly,
-            defaultValue: this.props.defaultValue.content,
+            defaultValue: this.props.defaultValue,
             onChange: this.props.onChange,
             style: {height: '100%'},
-            className: 'form-control'
+            className: 'form-control',
+            mode: this.props.mode
         });
 
         return React.createElement('div', {style: this.props.style, className: this.props.className}, editor);

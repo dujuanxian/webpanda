@@ -8,6 +8,7 @@ var Editor = require('./main/Editor');
 var projectStore = require('../stores/project');
 var LibraryImporter = require('./main/LibraryImporter');
 var librariesStore = require('../stores/libraries');
+var ProjectActions = require('../actions/project');
 var CodeMirrorEditor = require('./main/CodeMirrorEditor');
 
 module.exports = React.createClass({
@@ -15,6 +16,9 @@ module.exports = React.createClass({
         Reflux.connect(projectStore, "project"),
         Reflux.connect(librariesStore, "libraries")
     ],
+    handleChange: function(o){
+        ProjectActions.updateCurrentFile(o.value);
+    },
     render: function() {
         var project = this.state.project;
         var libraries = this.state.libraries;
@@ -25,7 +29,15 @@ module.exports = React.createClass({
             <main>
                 <LibraryImporter libraries={libraries} />
                 <Sidebar fileNames={fileNames} />
-                <CodeMirrorEditor defaultValue={project.getCurrentFile()} mode='htmlembedded' theme='solarized' lineNumbers='true' className="editor"/>
+                <CodeMirrorEditor
+                    onChange={this.handleChange}
+                    content={project.getCurrentFile().content}
+                    defaultValue={project.getCurrentFile().content}
+                    mode={mode}
+                    theme='solarized'
+                    lineNumbers='true'
+                    smartIndent='false'
+                    className="editor"/>
                 <Preview styles={project.getFileContent('main.css')} content={project.getFileContent('index.html')}/>
             </main>
         );
