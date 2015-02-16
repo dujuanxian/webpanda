@@ -3,6 +3,7 @@
 var React = require('react');
 var CodeMirror = require('codemirror');
 require('../../helper/ModeDependencies');
+require('./formatting');
 
 var CodeMirrorEditor = React.createClass({
     getInitialState: function() {
@@ -20,6 +21,7 @@ var CodeMirrorEditor = React.createClass({
     componentDidMount: function() {
         this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), this.props);
         this.editor.on('change', this.handleChange);
+        this.autoFormat();
     },
 
     componentDidUpdate: function() {
@@ -28,9 +30,14 @@ var CodeMirrorEditor = React.createClass({
                 if (this.editor.getValue() !== this.props.content) {
                     this.editor.setValue(this.props.content);
                     this.editor.setOption("mode", this.props.mode);
+                    this.autoFormat();
                 }
             }
         }
+    },
+
+    autoFormat: function() {
+        this.editor.autoFormatRange({line:0, ch:0}, {line:this.editor.lineCount(), ch: this.editor.getValue().length});
     },
 
     handleChange: function() {

@@ -33,6 +33,7 @@ module.exports = React.createClass({
                     mode={mode}
                     theme='solarized'
                     lineNumbers='true'
+                    lineWrapping='true'
                     smartIndent='false'
                     className="editor"/>
                 <Preview styles={project.getFileContent('main.css')} content={project.getFileContent('index.html')}/>
