@@ -2,6 +2,7 @@
 
 var React = require('react');
 var CodeMirror = require('codemirror');
+var _ = require('lodash');
 require('../../helper/ModeDependencies');
 require('./formatting');
 
@@ -19,9 +20,13 @@ var CodeMirrorEditor = React.createClass({
     },
 
     componentDidMount: function() {
-        this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), this.props);
+        var extraKeys = {
+            "extraKeys": {
+                "Cmd-L": () => this.autoFormat()
+            }
+        };
+        this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), _.merge(this.props, extraKeys));
         this.editor.on('change', this.handleChange);
-        this.autoFormat();
     },
 
     componentDidUpdate: function() {
@@ -30,14 +35,15 @@ var CodeMirrorEditor = React.createClass({
                 if (this.editor.getValue() !== this.props.content) {
                     this.editor.setValue(this.props.content);
                     this.editor.setOption("mode", this.props.mode);
-                    this.autoFormat();
                 }
             }
         }
     },
 
     autoFormat: function() {
-        this.editor.autoFormatRange({line:0, ch:0}, {line:this.editor.lineCount(), ch: this.editor.getValue().length});
+        var anchor = this.editor.listSelections()[0].anchor;
+        var head = this.editor.listSelections()[0].head;
+        this.editor.autoFormatRange(anchor, head);
     },
 
     handleChange: function() {
